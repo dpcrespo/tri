@@ -1,0 +1,51 @@
+@mixin btn-color($color) {
+  color: $color;
+}
+
+@mixin range-track() {
+  &::-webkit-slider-runnable-track {
+    @content;
+  }
+
+  &::-moz-range-track {
+    @content;
+  }
+}
+
+@mixin range-thumb() {
+  &::-moz-range-thumb  {
+    @content;
+  }
+
+  &::-ms-thumb {
+    @content;
+  }
+}
+
+@mixin fill-track {
+  &::-ms-fill-lower {
+    @content;
+  }
+
+  &::-ms-fill-upper {
+    @content;
+  }
+}
+
+$marginSides: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right
+);
+
+@mixin margins() {
+  @each $key, $marginSide in $marginSides {
+    @for $i from 1 through 5 {
+      .m#{$key}-#{$i*5} {
+        margin-#{$marginSide}: #{5*$i}px;
+      }
+    }
+  }
+}
+
